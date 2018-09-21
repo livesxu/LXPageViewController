@@ -60,6 +60,13 @@
 - (BOOL)lxPageShouldScrollIndex:(NSInteger)index;
 
 /**
+ 标签栏在未超过一屏幕情况下居中排布
+
+ @return 是否居中排布,默认NO 
+ */
+- (BOOL)lxPageTapsWithinScreenAlignmentCenter;
+
+/**
  滚动到index
  @param index 下标
  */

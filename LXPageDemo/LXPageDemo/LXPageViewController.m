@@ -84,6 +84,20 @@
         _indicator.hidden = YES;
         [self.collectionTaps addSubview:_indicator];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(lxPageTapsWithinScreenAlignmentCenter)] && [self.delegate lxPageTapsWithinScreenAlignmentCenter]) {
+        
+        CGFloat x = 0;
+        for (NSInteger i = 0; i < _itemsCount; i++) {
+            
+            x += [self.delegate lxPageTapSizeAtIndex:i].width;
+        }
+        
+        if (x < [UIScreen mainScreen].bounds.size.width) {
+            
+            self.collectionTaps.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - x)/2, 0, x, self.collectionTaps.frame.size.height);
+        }
+    }
 }
 
 - (void)setCurrentIndex:(NSInteger)currentIndex {
