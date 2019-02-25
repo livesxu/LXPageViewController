@@ -195,6 +195,15 @@
         _pageScroll.pagingEnabled = YES;
         _pageScroll.delegate = self;
         _pageScroll.showsHorizontalScrollIndicator = NO;
+        
+        if (@available(iOS 11.0, *)) {
+            _pageScroll.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+        _pageScroll.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _pageScroll.scrollIndicatorInsets = _pageScroll.contentInset;
     }
     return _pageScroll;
 }
